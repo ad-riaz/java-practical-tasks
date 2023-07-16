@@ -1,5 +1,12 @@
 package com.walking.lesson20_exceptions.task1_catchException;
 
+import com.walking.lesson20_exceptions.task1_catchException.model.File;
+import com.walking.lesson20_exceptions.task1_catchException.service.FileGenerator;
+import com.walking.lesson20_exceptions.task1_catchException.service.SearchService;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * Создайте массив, имитирующий простейшую файловую систему и содержащий объекты файлов.
  * <p>
@@ -14,6 +21,21 @@ package com.walking.lesson20_exceptions.task1_catchException;
  * Если нет, то выведите сообщение «Искомый файл не существует».
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        SearchService searchService = new SearchService(FileGenerator.generate());
+        searchService.search(getFileName());
+    }
+
+    public static String getFileName() {
+        Scanner scanner = new Scanner(System.in);
+
+        String filename = "";
+
+        while(filename.isEmpty()) {
+            System.out.println("Введите имя файла: ");
+            filename = scanner.nextLine();
+        }
+
+        return filename;
     }
 }
