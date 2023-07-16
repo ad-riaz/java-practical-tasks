@@ -12,20 +12,14 @@ public class SearchService {
         this.fileStorage = fileStorage;
     }
 
-    public void search(String filename) throws FileNotFoundException {
+    public File search(String filename) throws FileNotFoundException {
         if (filename != null) {
-            boolean flag = false;
-
             for (File file : fileStorage) {
                 if (file.getFilename().equals(filename)) {
-                    flag = true;
-                    System.out.println(file);
+                    return file;
                 }
             }
-
-            if (!flag) {
-                throw new FileNotFoundException("File with filename \"" + filename + "\" not found");
-            }
+            throw new FileNotFoundException("File with filename \"" + filename + "\" not found");
 
         } else {
             throw new FileNotFoundException("Filename couldn't be null");

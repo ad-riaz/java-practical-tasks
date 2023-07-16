@@ -21,9 +21,13 @@ import java.util.Scanner;
  * Если нет, то выведите сообщение «Искомый файл не существует».
  */
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         SearchService searchService = new SearchService(FileGenerator.generate());
-        searchService.search(getFileName());
+        try {
+            System.out.println(searchService.search(getFileName()));
+        } catch (FileNotFoundException e) {
+            System.out.println("File not exist");
+        }
     }
 
     public static String getFileName() {
@@ -36,6 +40,7 @@ public class Main {
             filename = scanner.nextLine();
         }
 
+        scanner.close();
         return filename;
     }
 }
