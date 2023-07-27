@@ -1,5 +1,8 @@
 package com.walking.lesson28_generics1.task4;
 
+import com.walking.lesson28_generics1.task4.exception.NoSuchElementInStackException;
+import com.walking.lesson28_generics1.task4.model.Stack;
+
 /**
  * Реализовать параметризованный класс, хранящий и обрабатывающий стек.
  * Стек — структура данных, в котором каждый элемент хранит ссылку на следующий.
@@ -16,5 +19,35 @@ package com.walking.lesson28_generics1.task4;
  */
 public class Main {
     public static void main(String[] args) {
+        Stack stack = new Stack(String.class);
+
+        System.out.println("Size: " + stack.size());
+        System.out.println("Length: " + stack.length());
+
+        stack.push("One");
+        stack.push("Two");
+        stack.push(null);
+        stack.push("Four");
+        stack.push("Five");
+        stack.push("Six");
+        stack.push("Seven");
+        stack.push("Eight");
+        stack.push("Nine");
+        stack.push("Ten");
+        stack.push("Eleven");
+        stack.push("Twelve");
+        System.out.println(stack.toString());
+        System.out.println("Size: " + stack.size());
+        System.out.println("Length: " + stack.length());
+
+
+        System.out.println("Popped from stack: " + stack.pop());
+        System.out.println(stack.toString());
+        System.out.println("Size: " + stack.size());
+        System.out.println("Length: " + stack.length());
+
+
+        System.out.println("Found element: " + stack.find("Nine"));
+        System.out.println("Found element: " + stack.find("Three"));
     }
 }
